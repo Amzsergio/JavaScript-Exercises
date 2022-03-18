@@ -20,5 +20,6 @@ console.log(x); // 1
 
 
 // ------------------------------------------------------------------
-// In the next link I've created a conceptual drawing describing step by step. 
+// In the next link I've created a conceptual drawing describing step by step.
+// This was made by me.  
 // https://excalidraw.com/#json=Z-9R4MsALxQSP9PBffk-r,rx9_PCACctusyMU3tpplgg
