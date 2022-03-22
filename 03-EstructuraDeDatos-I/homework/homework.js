@@ -3,10 +3,32 @@
 // usando recursión. Una vez realizadas de esa forma pueden probar hacerlas
 // de forma iterativa pero esto último no es obligatorio.
 
+
+// This is a proposed exercise by Teacher binaryToDecimal
+// var array = [1,0,1]
+// binaryToDecimal(array)
+// function binaryToDecimal(array){
+//   var arrLength = array.length
+//   var item = array.pop();
+//   console.log(arrLength)
+//   if((array.length) === 0) {return array[(array.length-1) - i]
+//   }else {i++}
+//       return binaryToDecimal(array[i]) + array[i-1] * (Math.pow(2, ((array.length-1) - (i-1))))
+// }
+
+/*
+array = [1,0,0]
+var i = 1
+array.length = 3
+
+*/
+
 function nFactorial(n) {
   // devolvé el factorial de n (n!)
   // ej:
   // el factorial de 3 es 6 (3 * 2 * 1)
+  if (n === 1) return 1;
+  return nFactorial(n-1) * n; 
 }
 
 function nFibonacci(n) {
@@ -15,6 +37,10 @@ function nFibonacci(n) {
   // nFibonacci(0) // 0  // el elemento 0 es cero
   // nFibonacci(1) // 1 // el elemento 1 es 1
   // nFibonacci(6) // 1 // el elemento 6 es 8
+  if(n===0) return 0
+  if(n===1 || n===2) return 1
+
+  return nFibonacci(n-1) + nFibonacci(n-2);
 
 }
 
@@ -25,8 +51,21 @@ function nFibonacci(n) {
 // size: Devuelve el número de elementos que contiene la queue.
 
 function Queue() {
-
+  this.array = [];
 }
+
+Queue.prototype.enqueue = function (item){
+  this.array.push(item)
+}
+
+Queue.prototype.dequeue = function(item){
+  return this.array.shift(item)
+}
+
+Queue.prototype.size = function(){
+  return this.array.length
+}
+
 
 // No modifiquen nada debajo de esta linea
 // --------------------------------
