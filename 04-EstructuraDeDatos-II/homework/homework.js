@@ -11,12 +11,83 @@
 // search: Busca un valor dentro de la lista. Puede recibir un valor o una función. Si no hubiera resultados, devuelve null.
 
 function LinkedList() {
-
+  this.head = null;
 }
+
 
 function Node(value){
+  this.value = value;
+  this.next = null;
+}
+
+// agregar al principio
+// agregar al final
+// agregar en el medio segun alguna condicion
+// agregar un elemento en la posicion x
+
+LinkedList.prototype.add = function(value){
+  let node = new Node(value);
+
+  let current = this.head;
+  if(!current){ // if(current === null)
+    this.head = node;
+    return node
+  } 
+  
+  while(current.next){
+    current = current.next;
+  } 
+  
+  current.next = node;
+  return node;
 
 }
+
+// Eliminar al principio
+// Eliminar al final
+// Eliminar en el medio segun alguna condicion
+// Eliminar un elemento en la posicion x
+LinkedList.prototype.remove = function(){
+  
+  let current = this.head;
+
+  if(!current) return current;
+  else if(current.next === null) {
+    let removed = current.value;
+    this.head = null;
+    return removed;
+  }
+
+  while(current.next.next){
+    current = current.next
+  }
+  let removed = current.next.value;
+  current.next = null;
+  return removed  
+}
+
+LinkedList.prototype.search = function(value){
+  
+  if(!this.head) return null;
+  let current = this.head;
+  while(current){
+      if(current.value === value) return current.value;
+      if(typeof value == 'function'){
+        if (value(current.value)){
+          return current.value;
+        }
+      }
+      current = current.next
+  }
+  return null;
+}
+
+
+
+
+
+
+
 
 // Hash Table( ver información en: https://es.wikipedia.org/wiki/Tabla_hash)
 // Una Hash table contiene un arreglo de "contenedores" o buckets donde puede guardar información.
