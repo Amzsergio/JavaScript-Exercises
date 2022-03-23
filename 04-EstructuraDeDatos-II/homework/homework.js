@@ -81,9 +81,19 @@ LinkedList.prototype.search = function(value){
   }
   return null;
 }
+// var animalList = new LinkedList();
+//  animalList.add('cat')
+//  animalList.add('dog')
+//  animalList.add('bear')
+//  console.log(animalList)
+//  console.log(animalList.search(function(nodeValue){return nodeValue === 'bear'}))
 
-
-
+// -------------------------------------------------------------------------------------
+// Take care 
+// RETURN A LIST ---> new LindedList
+// MODIFY A LIST ---> between aux and current do something (No devuelvo nada)
+// NO DEVUELVO NADA 
+// ---------------------------------------------------------------------------------------
 
 
 
@@ -102,8 +112,48 @@ LinkedList.prototype.search = function(value){
 //    - Retornar dicho valor.
 
 function HashTable() {
-
+  this.numBuckets = 35;
+  this.buckets = [];
 }
+
+HashTable.prototype.hash = function(key){
+  let sum = 0;
+  for(let i=0; i<key.length; i++){
+    sum += key.charCodeAt(i)
+  }
+  return sum%this.numBuckets;
+}
+HashTable.prototype.set = function(key, value){
+  if(typeof key !== 'string' ) throw new TypeError('Keys must be strings');
+  let save = this.hash(key)
+
+  if(this.buckets[save] === undefined){
+    this.buckets[save] = {};
+  }
+  this.buckets[save][key] = value; 
+}
+HashTable.prototype.get = function(key){
+  let save = this.hash(key);
+  return this.buckets[save][key]
+}
+
+HashTable.prototype.hasKey = function(key){
+  let save = this.hash(key);
+  if(this.buckets[save]){
+    if(this.buckets[save].hasOwnProperty(key)){
+      return true
+    }else {return false}
+  }
+  return false
+}
+
+let hashTable = new HashTable();
+console.log(hashTable.numBuckets)
+hashTable.set('Ana', 5345452)
+console.log(hashTable.get('Ana'))
+console.log(hashTable.hasKey('Ana'))
+
+
 
 
 // No modifiquen nada debajo de esta linea
