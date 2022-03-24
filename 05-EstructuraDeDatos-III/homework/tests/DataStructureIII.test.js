@@ -23,12 +23,12 @@ describe('binarySearchTree', function() {
     expect(typeof tree.size).toBe('function');
   });
 
-  it('toma valores y reporta tamaño correctamente', function () {
+  xit('toma valores y reporta tamaño correctamente', function () {
     tree.insert(12);
     expect(tree.size()).toBe(2);
   });
 
-  it('hace nodos en la rama correcta', function () {
+it('hace nodos en la rama correcta', function () {
     tree.insert(12);
     tree.insert(22);
 expect(tree.size()).toBe(3);
@@ -83,7 +83,7 @@ expect(tree.size()).toBe(3);
   });
 
   // ventaja obvia: valores son procesados respetando su orden lógico
-  it('corre depth-first (en recorrido "in-order") cuando depthFirstForEach() es ejecutado sin ninguna opcion o con la opcion "in-order"', function() {
+ it('corre depth-first (en recorrido "in-order") cuando depthFirstForEach() es ejecutado sin ninguna opcion o con la opcion "in-order"', function() {
     valuesToInsert.forEach(function(value){
         tree.insert(value);
     });
